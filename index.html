@@ -22,7 +22,7 @@
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <span class="text-3xl">🍇</span>
+                <span class="text-3xl">🫐</span>
                 <span class="text-2xl font-black tracking-tight text-indigo-900">베리<span class="text-emerald-600">탐나</span></span>
             </div>
             <nav class="hidden md:flex space-x-8 font-medium text-slate-600">
@@ -267,7 +267,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="md:col-span-5 space-y-4">
                 <div class="flex items-center space-x-2">
-                    <span class="text-2xl">🍇</span>
+                    <span class="text-2xl">🫐</span>
                     <span class="text-xl font-bold tracking-tight text-white">베리탐나 농장</span>
                 </div>
                 <p class="text-sm leading-relaxed text-slate-400">부모의 정직한 고집으로 농가 자부심을 지키겠습니다.</p>
@@ -314,7 +314,7 @@
     </div>
 
     <script>
-        const ADMIN_PASSWORD = "1234"; // 사장님 비밀번호
+        const ADMIN_PASSWORD = "1234"; 
 
         const priceMap = { '대': 25000, '특대': 30000, '왕특': 35000 };
 
@@ -333,13 +333,11 @@
         const adminAuthModal = document.getElementById('adminAuthModal');
         const adminPasswordInput = document.getElementById('adminPasswordInput');
 
-        // 상단 단가표 클릭 시 아래 주문서 옵션이 자동 선택되는 기능
         function selectProduct(prodType) {
             document.getElementById('orderProduct').value = prodType;
             calculateTotalPrice();
         }
 
-        // 실시간 총 금액 금액 계산 함수
         function calculateTotalPrice() {
             const product = document.getElementById('orderProduct').value;
             const qty = parseInt(document.getElementById('orderQty').value, 10);
@@ -348,7 +346,6 @@
             return total;
         }
 
-        /* 🔐 어드민 로그인 메커니즘 */
         function openAdminModal() {
             adminPasswordInput.value = '';
             adminAuthModal.classList.remove('hidden');
@@ -378,7 +375,6 @@
             alert('로그아웃 되었습니다.');
         }
 
-        /* 📝 주문서 전송(접수) 처리 */
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -414,7 +410,6 @@
             calculateTotalPrice();
         }
 
-        /* 📊 사장님 전용 실시간 주문 렌더링 */
         function renderTable() {
             if(sessionStorage.getItem('isAdminLoggedIn') !== 'true') return;
 
