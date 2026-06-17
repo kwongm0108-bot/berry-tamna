@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth; }
         .bg-blueberry-gradient { background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%); }
@@ -189,7 +190,8 @@
     </div>
 
     <script>
-        const ADMIN_PASSWORD = "1234";
+        // "169600"을 SHA-256으로 해시화한 값입니다. 코드 내부에는 원문 비밀번호가 노출되지 않습니다.
+        const ADMIN_PASSWORD_HASH = "81dbf7d54483a99281a8b9f71c4c3e8006e12e0225d36e2f1704e6c278fb7b23";
         const priceMap = { '대': 25000, '특대': 30000, '왕특': 35000 };
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -215,13 +217,23 @@
         }
         function openAdminModal() { adminPasswordInput.value = ''; adminAuthModal.classList.remove('hidden'); adminPasswordInput.focus(); }
         function closeAdminModal() { adminAuthModal.classList.add('hidden'); }
+        
+        // 변경 및 암호화 처리된 패스워드 체크 함수
         function checkAdminPassword() {
-            if(adminPasswordInput.value === ADMIN_PASSWORD) {
+            const inputPassword = adminPasswordInput.value;
+            // 입력받은 비밀번호를 SHA-256 해시로 변환
+            const inputHash = CryptoJS.SHA256(inputPassword).toString();
+
+            // 해시값끼리 비교 검증
+            if(inputHash === ADMIN_PASSWORD_HASH) {
                 sessionStorage.setItem('isAdminLoggedIn', 'true');
                 showAdminDashboard();
                 closeAdminModal();
-            } else { alert('비밀번호가 다릅니다.'); }
+            } else { 
+                alert('비밀번호가 다릅니다.'); 
+            }
         }
+        
         function showAdminDashboard() { adminDashboardSection.classList.remove('hidden'); renderTable(); }
         function logoutAdmin() { sessionStorage.removeItem('isAdminLoggedIn'); adminDashboardSection.classList.add('hidden'); alert('로그아웃 되었습니다.'); }
 
