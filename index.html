@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>베리탐나 - 프리미엄 블루베리 농장</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght=300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth; }
@@ -90,41 +90,54 @@
         </div>
     </section>
 
-    <section id="products" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">올해 수확 블루베리 단가표</h2>
+    <!-- 📱 단가표 섹션 모바일 최적화 수정 적용 -->
+    <section id="products" class="py-12 md:py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+                <h2 class="text-2xl font-bold text-slate-900 sm:text-4xl">올해 수확 블루베리 단가표</h2>
+                <p class="text-xs text-slate-500 mt-1 md:hidden">품종을 누르면 하단 주문서에 자동 반영됩니다.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md p-8 flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900">블루베리 [왕특]</h3>
-                        <p class="text-slate-500 text-sm mt-2 mb-4">5백원 동전 크기만 한 알</p>
-                        <div class="text-2xl font-black text-purple-900 mb-6">45,000원</div>
+            
+            <!-- 💡 모바일에서는 3열 격자(grid-cols-3)로 좁게 가로 배열하여 한눈에 보이게 변경 -->
+            <div class="grid grid-cols-3 md:grid-cols-3 gap-2 md:gap-8 items-stretch">
+                
+                <!-- [왕특] 카드 -->
+                <div class="bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-sm md:shadow-md p-3 md:p-8 flex flex-col justify-between border border-slate-200">
+                    <div class="text-center md:text-left">
+                        <span class="inline-block text-[10px] md:text-xs font-bold bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded mb-1">500원 동전 크기</span>
+                        <h3 class="text-sm md:text-2xl font-black text-slate-900">왕특</h3>
+                        <p class="hidden md:block text-slate-500 text-sm mt-2 mb-4">5백원 동전 크기만 한 알</p>
+                        <div class="text-xs md:text-2xl font-black text-purple-900 my-2 md:mb-6">45,000원<span class="text-[10px] md:text-sm font-normal text-slate-500 block md:inline"> / 1kg</span></div>
                     </div>
-                    <a href="#order" onclick="selectProduct('왕특')" class="block w-full text-center bg-purple-600 text-white font-semibold py-3 rounded-xl transition hover:bg-purple-700">왕특 주문서에 넣기</a>
+                    <a href="#order" onclick="selectProduct('왕특')" class="block w-full text-center bg-purple-600 text-white font-semibold py-2 md:py-3 rounded-lg md:rounded-xl text-[11px] md:text-base transition hover:bg-purple-700 shadow-sm">선택</a>
                 </div>
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-indigo-500 p-8 flex flex-col justify-between relative scale-105 z-10 h-full">
-                    <div>
-                        <h3 class="text-2xl font-bold text-indigo-900">블루베리 [특대]</h3>
-                        <p class="text-slate-500 text-sm mt-2 mb-4">선물용 강력 추천</p>
-                        <div class="text-2xl font-black text-indigo-900 mb-6">40,000원</div>
+                
+                <!-- [특대] 카드 (추천 상품 강조) -->
+                <div class="bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-md md:shadow-xl border-2 border-indigo-500 p-3 md:p-8 flex flex-col justify-between relative z-10">
+                    <div class="text-center md:text-left">
+                        <span class="inline-block text-[10px] md:text-xs font-bold bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded mb-1">👑 추천</span>
+                        <h3 class="text-sm md:text-2xl font-black text-indigo-900">특대</h3>
+                        <p class="hidden md:block text-slate-500 text-sm mt-2 mb-4">선물용 강력 추천</p>
+                        <div class="text-xs md:text-2xl font-black text-indigo-900 my-2 md:mb-6">40,000원<span class="text-[10px] md:text-sm font-normal text-slate-500 block md:inline"> / 1kg</span></div>
                     </div>
-                    <a href="#order" onclick="selectProduct('특대')" class="block w-full text-center bg-indigo-600 text-white font-bold py-3.5 rounded-xl transition hover:bg-indigo-700">특대 주문서에 넣기</a>
+                    <a href="#order" onclick="selectProduct('특대')" class="block w-full text-center bg-indigo-600 text-white font-bold py-2 md:py-3.5 rounded-lg md:rounded-xl text-[11px] md:text-base transition hover:bg-indigo-700 shadow-md">선택</a>
                 </div>
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md p-8 flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900">블루베리 [대]</h3>
-                        <p class="text-slate-500 text-sm mt-2 mb-4">가볍게 먹기 좋은 크기</p>
-                        <div class="text-2xl font-black text-slate-900 mb-6">35,000원</div>
+                
+                <!-- [대] 카드 -->
+                <div class="bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-sm md:shadow-md p-3 md:p-8 flex flex-col justify-between border border-slate-200">
+                    <div class="text-center md:text-left">
+                        <span class="inline-block text-[10px] md:text-xs font-bold bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded mb-1">가성비 최고</span>
+                        <h3 class="text-sm md:text-2xl font-black text-slate-900">대</h3>
+                        <p class="hidden md:block text-slate-500 text-sm mt-2 mb-4">가볍게 먹기 좋은 크기</p>
+                        <div class="text-xs md:text-2xl font-black text-slate-900 my-2 md:mb-6">35,000원<span class="text-[10px] md:text-sm font-normal text-slate-500 block md:inline"> / 1kg</span></div>
                     </div>
-                    <a href="#order" onclick="selectProduct('대')" class="block w-full text-center bg-slate-100 text-slate-700 font-semibold py-3 rounded-xl transition hover:bg-slate-200">주문서에 넣기</a>
+                    <a href="#order" onclick="selectProduct('대')" class="block w-full text-center bg-slate-100 text-slate-700 font-semibold py-2 md:py-3 rounded-lg md:rounded-xl text-[11px] md:text-base transition hover:bg-slate-200 shadow-sm">선택</a>
                 </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- ⭐ [NEW] 고객 한 줄 후기 섹션 -->
     <section id="reviews" class="py-20 bg-white border-t border-b">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -132,7 +145,6 @@
                 <p class="text-slate-500 text-sm mt-2">베리탐나 블루베리를 맛보신 고객님들의 솔직한 이야기입니다.</p>
             </div>
 
-            <!-- 후기 작성 폼 -->
             <form id="reviewForm" class="bg-slate-50 p-6 rounded-2xl border mb-10 space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -159,10 +171,7 @@
                 </div>
             </form>
 
-            <!-- 후기 목록 출력 공간 -->
-            <div id="reviewList" class="space-y-4">
-                <!-- 자바스크립트로 후기가 여기에 쌓임 -->
-            </div>
+            <div id="reviewList" class="space-y-4"></div>
         </div>
     </section>
 
@@ -181,14 +190,13 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">수량 *</label>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">수량 (무게) *</label>
                             <select id="orderQty" onchange="calculateTotalPrice()" class="w-full px-4 py-3 rounded-xl border bg-slate-50 text-sm">
-                                <option value="1">1 kg</option><option value="2">2 kg</option><option value="3">3 kg</option>
                             </select>
                         </div>
                         <div class="sm:col-span-2 flex justify-between items-center pt-3 border-t">
                             <span class="text-sm font-bold text-slate-700">총 금액</span>
-                            <span class="text-2xl font-black text-indigo-600"><span id="totalPriceDisplay">40,000</span>원</span>
+                            <span class="text-2xl font-black text-indigo-600"><span id="totalPriceDisplay">80,000</span>원</span>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -228,7 +236,7 @@
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
             <div><span class="text-white font-bold text-lg">🫐 베리탐나 농장</span><p class="mt-2 text-xs">대표자: 베리탐나 농장주 | 주소: 블루베리길 100</p></div>
             <div><h3 class="text-white font-semibold">🏦 농가 직거래 계좌</h3><p class="text-emerald-400 font-bold mt-1">농협 000-0000-0000-00</p></div>
-            <div><h3 class="text-white font-semibold">📞 사장님 직통 문의</h3><p class="text-white font-bold mt-1">010-1234-5678</p></div>
+            <div><h3 class="text-white font-semibold">📞 문의하기</h3><p class="text-white font-bold mt-1">010-1234-5678</p></div>
         </div>
     </footer>
 
@@ -247,8 +255,9 @@
         const priceMap = { '왕특': 45000, '특대': 40000, '대': 35000 };
 
         window.addEventListener('DOMContentLoaded', () => {
-            calculateTotalPrice();
-            renderReviews(); // 시작 시 초기 리뷰 렌더링
+            initQtyOptions();       // 무게 선택 옵션 생성 (2kg~50kg 짝수만)
+            calculateTotalPrice();  // 기본 선택된 2kg 가격 계산
+            renderReviews();
             if(sessionStorage.getItem('isAdminLoggedIn') === 'true') showAdminDashboard();
         });
 
@@ -260,39 +269,50 @@
         const adminAuthModal = document.getElementById('adminAuthModal');
         const adminPasswordInput = document.getElementById('adminPasswordInput');
         
-        // 리뷰 관련 DOM 선언
         const reviewForm = document.getElementById('reviewForm');
         const reviewList = document.getElementById('reviewList');
 
+        // ⚙️ 1kg 제거, 2kg부터 50kg까지 오직 짝수만 노출하는 자동화 함수
+        function initQtyOptions() {
+            const qtySelect = document.getElementById('orderQty');
+            qtySelect.innerHTML = ''; // 초기화
+
+            // i는 2부터 시작해서 2씩 가산 (2, 4, 6, 8, ... 50)
+            for (let i = 2; i <= 50; i += 2) {
+                const option = document.createElement('option');
+                option.value = i.toString();
+                option.textContent = i + " kg";
+                qtySelect.appendChild(option);
+            }
+        }
+
         function selectProduct(prodType) { document.getElementById('orderProduct').value = prodType; calculateTotalPrice(); }
+        
         function calculateTotalPrice() {
             const product = document.getElementById('orderProduct').value;
-            const qty = parseInt(document.getElementById('orderQty').value, 10);
+            const qtyElement = document.getElementById('orderQty');
+            if(!qtyElement.value) return; 
+            
+            const qty = parseInt(qtyElement.value, 10);
             const total = priceMap[product] * qty;
             document.getElementById('totalPriceDisplay').textContent = total.toLocaleString();
             return total;
         }
+
         function openAdminModal() { adminPasswordInput.value = ''; adminAuthModal.classList.remove('hidden'); adminPasswordInput.focus(); }
         function closeAdminModal() { adminAuthModal.classList.add('hidden'); }
         
         function checkAdminPassword() {
-            const p1 = "169";
-            const p2 = "600";
-            
+            const p1 = "169"; const p2 = "600";
             if (adminPasswordInput.value === (p1 + p2)) {
                 sessionStorage.setItem('isAdminLoggedIn', 'true');
-                showAdminDashboard();
-                renderReviews(); // 관리자가 로그인했으므로 후기창 삭제 버튼 활성화를 위해 재렌더링
-                closeAdminModal();
-            } else { 
-                alert('비밀번호가 다릅니다.'); 
-            }
+                showAdminDashboard(); renderReviews(); closeAdminModal();
+            } else { alert('비밀번호가 다릅니다.'); }
         }
         
         function showAdminDashboard() { adminDashboardSection.classList.remove('hidden'); renderTable(); }
         function logoutAdmin() { sessionStorage.removeItem('isAdminLoggedIn'); adminDashboardSection.classList.add('hidden'); renderReviews(); alert('로그아웃 되었습니다.'); }
 
-        // [주문 접수 로직]
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('userName').value.trim();
@@ -334,7 +354,6 @@
         }
         function deleteUser(id) { if(confirm('삭제합니까?')) { let d = JSON.parse(localStorage.getItem('berry_tamna_users')); localStorage.setItem('berry_tamna_users', JSON.stringify(d.filter(u=>u.id!==id))); renderTable(); } }
 
-        // ⭐ [NEW 후기 관련 스크립트 로직]
         reviewForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('reviewName').value.trim();
@@ -343,12 +362,10 @@
 
             const review = { id: Date.now(), name, rating: parseInt(rating, 10), content, date: new Date().toLocaleDateString() };
             let reviews = JSON.parse(localStorage.getItem('berry_tamna_reviews')) || [];
-            reviews.unshift(review); // 최신글이 항상 맨 위에 보이도록 추가
+            reviews.unshift(review);
             localStorage.setItem('berry_tamna_reviews', JSON.stringify(reviews));
 
-            reviewForm.reset();
-            renderReviews();
-            alert('후기가 정상적으로 등록되었습니다!');
+            reviewForm.reset(); renderReviews(); alert('후기가 정상적으로 등록되었습니다!');
         });
 
         function renderReviews() {
@@ -357,11 +374,7 @@
             reviewList.innerHTML = '';
 
             if (reviews.length === 0) {
-                // 초기 기본 샘플 리뷰 노출
-                reviewList.innerHTML = `
-                    <div class="p-5 bg-slate-50 rounded-2xl border border-dashed text-center text-slate-400 text-sm">
-                        아직 작성된 후기가 없습니다. 첫 번째 후기의 주인공이 되어보세요!
-                    </div>`;
+                reviewList.innerHTML = `<div class="p-5 bg-slate-50 rounded-2xl border border-dashed text-center text-slate-400 text-sm">아직 작성된 후기가 없습니다. 첫 번째 후기의 주인공이 되어보세요!</div>`;
                 return;
             }
 
@@ -369,8 +382,6 @@
                 const stars = '⭐'.repeat(rev.rating);
                 const div = document.createElement('div');
                 div.className = "p-5 bg-slate-50 rounded-2xl border flex justify-between items-start gap-4 transition hover:bg-slate-100/50";
-                
-                // 관리자 로그인 상태일 때만 노출되는 삭제 버튼 디자인 생성
                 const deleteBtnHtml = isAdmin ? `<button onclick="deleteReview(${rev.id})" class="text-xs text-red-500 font-semibold hover:underline bg-red-50 px-2 py-1 rounded-md border border-red-200">삭제</button>` : '';
 
                 div.innerHTML = `
